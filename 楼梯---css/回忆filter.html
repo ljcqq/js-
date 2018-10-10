@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>孩子多个1</li>
+			<li>孩子多个2</li>
+			<li>孩子多个3</li>
+			<li>孩子多个4</li>
+			<li>孩子多个5</li>
+		</ul>
+	</body>
+</html>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+	$li = $("li").filter(function(index){
+		//返回满足某个条件的  li
+		//console.log( index );
+		return index == 3;
+	})
+	$li.css("color","red")
+</script>

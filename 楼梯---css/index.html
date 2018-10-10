@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			#LoutiNav{
+				position: fixed;
+				top: 25%;
+				left: 40px;
+				width:30px;
+				border: 1px solid ;
+			}
+			#LoutiNav ul li{
+				position:relative;
+				width:30px;
+				height:30px;
+				list-style:none;
+				text-align:center;
+				line-height: 30px;
+				font-size: 12px;
+				cursor: pointer;
+				border-bottom: 1px dotted #AAAAAA;
+			}
+			#LoutiNav ul li.last {
+				background: darkred;
+				color: white;
+				border-bottom: none;
+			}
+			#LoutiNav ul li span{
+				display: none;
+				width:30px;
+				height: 30px;
+				position: absolute;	
+				top: 0;
+				left: 0;
+				color:red;
+			}
+			#LoutiNav ul li:hover span{
+				display: block;
+				background: darkred;
+				color: white;
+			}
+			#LoutiNav ul li span.active {
+				display: block;
+				background: white;
+				color: red;
+			}
+			#LoutiNav ul li:hover span.active{
+				display: block;
+				background: darkred;
+				color: white;
+			}
+			#header,#main,#footer {
+				margin: auto;
+				width: 1000px;
+				text-align: center;
+				font-size: 40px;
+				font-weight: bold;
+				line-height: 500px;
+			}
+			
+			#main div{
+				height: 700px;
+				font-size: 50px;
+				color: honeydew;
+				line-height: 700px;
+			}
+			
+			#header{
+				height: 500px;
+				background: darkcyan;
+			}
+			#footer{
+				height: 500px;
+				background: darkcyan;
+			}
+	
+		</style>
+<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+	</head>
+
+	<body>
+		<div id="LoutiNav">
+			<ul>
+				<li>1F <span>服饰</span> </li>
+				<li>2F <span>美妆</span> </li>
+				<li>3F <span>手机</span> </li>
+				<li>4F <span>家电</span> </li>
+				<li>5F <span>数码</span> </li>
+				<li>6F <span>运动</span> </li>
+				<li>7F <span>居家</span> </li>
+				<li>8F <span>母婴</span> </li>
+				<li>9F <span>食品</span> </li>
+				<li>10F <span>图书</span> </li>
+				<li>11F <span>服务</span> </li>
+				<li class="last">Top</li>
+			</ul>
+		</div>
+		
+		<!--楼层内容开始-->
+		<div id="header">头部</div>
+		<div id="main">
+			<div class="Louti" style="background: #cc0033;">服饰</div>
+			<div class="Louti" style="background: #999933;">美妆</div>
+			<div class="Louti" style="background: #ccff33;">手机</div>
+			<div class="Louti" style="background: #006633;">家电</div>
+			<div class="Louti" style="background: #6666cc;">数码</div>
+			<div class="Louti" style="background: #ff6600;">运动</div>
+			<div class="Louti" style="background: #ffcc00;">居家</div>
+			<div class="Louti" style="background: #3333ff;">母婴</div>
+			<div class="Louti" style="background: #ff00cc;">食品</div>
+			<div class="Louti" style="background: #669900;">图书</div>
+			<div class="Louti" style="background: #ff66cc;">服务</div>
+		</div>
+		<div id="footer">尾部</div>
+		<!--楼层内容结束-->
+	</body>
+</html>
+<script type="text/javascript">
+	/*
+	 	1、点击左侧的楼层号 找到对应的楼层（根据下标）
+	 	控制页面滚走的距离就是当前楼层的offset().top--距离body顶部
+	 	2、点击top  回到顶部
+	 	3、操作滚动条的移动   根据楼层的位置控制楼层号的改变
+	 	找到当前在可视区面积最大的楼层，找到了这个楼层的下标
+	 	根据楼层的下标  找到楼层号
+	*/
+	//楼梯号
+	$list = $("#LoutiNav li:not(.last)");
+	
+	//所有的楼层
+	$divs = $(".Louti");
+	
+	//定义一个变量控制 滚动条代码的执行
+	//假设值为true时  滚动条的代码可以执行
+	var flag = true;
+	//第一步 ：点击左侧的楼层号  根据下标找到对应的楼层
+	$list.click(function(){
+		flag = false;
+		//操作当前点击的楼层号的样式  添加样式类
+		$(this).find("span")
+			   .addClass("active")
+			   .end()
+			   .siblings()
+			   .find("span")
+			   .removeClass("active");
+		//获取当前操作的楼层号的下标
+		var index = $(this).index();
+		
+		//根据下标查找对应的楼层  并获取给楼层相对于body顶部的距离  obj.offset().top
+		var t = $divs.eq(index).offset().top;
+		
+		//设置页面滚走的距离为 t （当前index对应的楼层相对于body距离）
+		$("body,html").animate({ scrollTop:t },1000,function(){
+			//动画完成后 将flag的值重新设置为true  滚动条代码可以被触发
+			flag = true;
+		});
+	})
+	//第二步 ： 点击top  回到顶部
+	$(".last").click(function(){
+		$("body,html").animate({ scrollTop:0 },1000);
+	})
+	//第三步 : 操作滚动条 根据某个楼层的位置 确定高亮显示的楼层号
+	$(window).scroll(function(){
+		if( flag ){
+			//获取某个楼层的高度 
+			var h = $divs.eq(0).height();
+			
+			//获取页面滚走的距离
+			var sTop = $("body,html").scrollTop();
+			
+			//根据filter查找满足某个条件的楼层
+			//条件 ： 绝对值(某个楼层的top-页面滚走的距离) < h/2
+			
+			var $floor = $divs.filter(function(){
+				//this
+				return Math.abs($(this).offset().top - sTop) < h/2;
+			})
+			
+			//根据返回的楼层 获取该楼层在同辈元素中的位置
+			var index = $floor.index();
+			if( index != -1 ){
+				//根据index 找到要高亮显示的楼层号
+				$list.eq(index).find("span")
+							   .addClass("active")
+							   .end()
+							   .siblings()
+							   .find("span")
+							   .removeClass("active");
+			}
+			
+			//当页面滚走的距离小于某个值时   将楼层号的样式清空
+			if( sTop < 100 ){
+				$list.find("span").removeClass("active");
+			}
+		}
+	})
+</script>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
