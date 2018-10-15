@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="dahuiji.css" />
+		<script type="text/javascript">
+			window.onload = function (){
+				new Engine()
+			}
+			//引擎
+			function Engine(){
+				this.ele = document.getElementById("body_main");
+				this.init()
+			}
+			Engine.prototype.init = function (){
+				var  that = this;
+				this.lis = this.ele.children[0].children;
+				for( var i = 0,len = this.lis.length; i < len; i ++){
+					this.lis[i].index = i;
+					this.lis[i].onclick = function(){
+						this.parentNode.remove();
+						that.loadPage();
+						that.frequency = this.index;
+					}
+				}
+			}
+			Engine.prototype.loadPage = function (){
+				var that = this;
+				var logo = createEle('div','logo');
+				appendBody(logo);
+				var loading = createEle('div','loading');
+				appendBody(loading)
+				//设置lodding动画
+				var index = 1;
+				var loaddingTimer = setInterval( function (){
+					loading.style.background = "url(images/loading"+ ( index ++ % 3 + 1) + ".png) no-repeat"
+				},400)
+				//设置背景动画
+				var positionY = 1;
+				setInterval( function(){
+				    that.ele.style.backgroundPositionY = positionY ++ +"px" 	
+				  
+				},50)
+				//清场开始游戏
+				setTimeout( function(){
+					logo.remove();
+					loading.remove();
+					clearInterval( loaddingTimer);
+					that.gameStart()
+				},3000)
+			}
+			Engine.prototype.gameStart = function(){
+				//我方飞机登场
+				Plane.init();
+				//我方飞机开火；
+				Plane.fire(this.frequency);
+				//创建敌机
+				this.createEnemy()
+			}
+			Engine.prototype.createEnemy = function (){
+				//创建敌机出现的概率
+			    //小飞机
+				setInterval( function (){
+					Math.random()>0.5? Enemy(0):""
+					},1000)
+				//中飞机
+				setInterval(function(){
+					Math.random()>0.5? Enemy(1):""
+					},3000)
+			    //大飞机
+				setInterval(function(){
+					Math.random()>0.3? Enemy(2):""
+					},8000)
+			}
+			//我放飞机
+			var Plane={
+				
+				
+				
+				}
+			
+			
+			//工具箱
+			function createEle( tagName, className){
+				var ele = document.createElement(tagName);
+				    ele.className = className;
+				    return ele;
+			}
+			function appendBody(ele){
+				document.body.appendChild(ele)
+			}
+		</script>
+	</head>
+	<body>
+		<div id="body_main" class="main" >
+			<ul id="options" class="options">
+				<li value="1">超级困难</li>
+				<li value="2">非常困难</li>
+				<li value="3">比较困难</li>
+				<li value="4">就选我吧</li>
+			</ul>
+		</div>
+        
+	</body>
+</html>
