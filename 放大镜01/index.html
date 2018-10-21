@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<script type="text/javascript">
+			window.onload = function(){
+				//1.获取大盒子
+				const oBigBox = document.getElementById("div1");
+				//2.获取小图所在的盒子
+				const oSmallPic = byClassName(oBigBox,'small_pic')[0];
+				//3.获取遮罩
+				const oMark = byClassName(oBigBox,'mark')[0];
+				//4.获取滑块
+				const oFloat = byClassName(oBigBox,'float_layer')[0];
+				//5.获取大图所在盒子
+				const oBigPic = byClassName(oBigBox,'big_pic')[0];
+				//6.获取大图
+				const oBigImg = oBigPic.getElementsByTagName('img')[0];
+				//7.给遮罩添加移入事件
+				oMark.onmouseenter = function(){
+					oFloat.style.display = 'block';
+					oBigPic.style.display = 'block';
+				}
+				//8.给遮罩添加移出事件
+				oMark.onmouseleave = function(){
+					oFloat.style.display = 'none';
+					oBigPic.style.display = 'none';
+				}
+				//9.给遮罩添加移动事件
+				oMark.onmousemove = function(evt){
+					let e = evt || window.event;
+					//    鼠标的页面坐标值 - 大盒子相对页面的left - 遮罩相对大盒子的left - 滑块宽度的一半
+					var left = e.pageX - oBigBox.offsetLeft - oMark.offsetLeft - oFloat.offsetWidth / 2;
+					var top = e.pageY - oBigBox.offsetTop - oMark.offsetTop - oFloat.offsetHeight / 2;
+					
+					//边界
+					if(left <= 0){
+						left = 0;
+					}else if(left >= oMark.offsetWidth - oFloat.offsetWidth){
+						left = oMark.offsetWidth - oFloat.offsetWidth;
+					}
+					if(top <= 0){
+						top = 0;
+					}else if(top >= oMark.offsetHeight - oFloat.offsetHeight){
+						top = oMark.offsetHeight - oFloat.offsetHeight;
+					}
+					oFloat.style.left = left + 'px';
+					oFloat.style.top = top + 'px';
+					
+					//求小图的移动比例
+					let pX = left / (oMark.offsetWidth - oFloat.offsetWidth);
+					let pY = top / (oMark.offsetHeight - oFloat.offsetHeight);
+					//设置大图的坐标值
+					oBigImg.style.left = - pX * (oBigImg.offsetWidth - oBigPic.offsetWidth) + 'px';
+					oBigImg.style.top = - pY * (oBigImg.offsetHeight - oBigPic.offsetHeight) + 'px';
+				}
+			}
+			function byClassName(obj,className){
+				if(obj.getElementsByClassName){
+					return obj.getElementsByClassName(className);
+				}else{
+					var arr = [];
+					var eles = obj.getElementsByTagName('*');
+					for(let i = 0,len = eles.length;i < len;i ++){
+						if(eles[i].className === className){
+							arr.push(eles[i]);
+						}
+					}
+					return arr;
+				}
+			}
+		
+		
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			<div class="small_pic">
+				<span class="mark"></span>   <!--遮罩层-->
+				<span class="float_layer"></span>
+				<img src="img/small.jpg" />
+			</div>
+			<div class="big_pic">
+				<img src="img/big.jpg" />
+			</div>
+		</div>
+		<script type="text/javascript" src="">
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
