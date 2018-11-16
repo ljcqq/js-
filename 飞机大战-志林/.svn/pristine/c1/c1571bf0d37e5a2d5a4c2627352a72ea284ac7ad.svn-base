@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="dahuiji.css" />
+	<script type="text/javascript">
+		window.onload = function(){
+			new Engine();
+		}
+		//引擎
+		function Engine(){
+			this.ele = document.getElementById("body_main");
+			this.init();
+		}
+		Engine.prototype.init = function(){
+			//记录this
+			var that = this;
+			this.lis = this.ele.children[0].children;
+			//添加点击事件
+			for(var i = 0,len = this.lis.length;i < len;i ++){
+				//记录下标
+				this.lis[i].index = i;
+				this.lis[i].onclick = function(){
+					this.parentNode.remove();
+					that.loadPage();
+					//决定我方飞机开火频率
+					that.frequency = this.index; //记录难度选项
+				}
+			}
+		}
+		Engine.prototype.loadPage = function(){
+			//记录this
+			var that = this;
+			//创建logo
+			var logo = createEle('div','logo');
+			//添加到页面
+			appendBody(logo);
+			//创建loading
+			var loading = createEle('div','loading');
+			//添加到页面
+			appendBody(loading);
+			//设置loading动画
+			var index = 1;
+			var loadingTimer = setInterval(function(){
+				loading.style.background = "url(images/loading" + (index ++ % 3 + 1) + ".png) no-repeat";
+			},400)
+			//设置背景动画
+			var positionY = 1;
+			setInterval(function(){
+				that.ele.style.backgroundPositionY = positionY ++ + 'px';
+			},30)
+			//3秒后清场,进入游戏
+			setTimeout(function(){
+				//删除logo
+				logo.remove();
+				//删除loading
+				loading.remove();
+				//停止loading计时器
+				clearInterval(loadingTimer);
+				that.gameStart();
+			},3000)
+		}
+		Engine.prototype.gameStart = function(){
+			//我方飞机闪亮登场
+			Plane.init();
+			//我方飞机开火
+			Plane.fire(this.frequency);
+			//创建敌机
+			this.createEnemy();
+		}
+		Engine.prototype.createEnemy = function(){
+			//创建敌机出现的概率
+			//小飞机
+			setInterval(function(){
+				Math.random() >= 0.5 ? new Enemy(0) : "";
+			},1000)
+			//中飞机
+			setInterval(function(){
+				Math.random() >= 0.5 ? new Enemy(1) : "";
+			},3000)
+			//大飞机
+			setInterval(function(){
+				Math.random() >= 0.2 ? new Enemy(2) : "";
+			},8000)
+		}
+		//我方飞机
+		var Plane = {
+			//创建飞机
+			ele : createEle('div','my-warplain'),
+			//初始化我方飞机
+			init : function(){
+				//添加到页面
+				appendBody(this.ele);
+				//定位我方飞机
+				this.ele.style.left = document.documentElement.clientWidth / 2 - this.ele.offsetWidth / 2 + 'px';
+				this.ele.style.top = document.documentElement.clientHeight - this.ele.offsetHeight + 'px';
+				this.fly();
+			},
+			//飞机起飞
+			fly : function(){
+				//记录this
+				var that  = this;
+				//获取引擎
+				var body_main = document.getElementById("body_main");
+				//鼠标跟随
+				document.onmousemove = function(evt){
+					var e = evt || window.event;
+					var left = e.pageX - that.ele.offsetWidth / 2;
+					var top = e.pageY - that.ele.offsetHeight / 2;
+					//设置边界
+					if(left <= body_main.offsetLeft){
+						left = body_main.offsetLeft;
+					}
+					if(left >= body_main.offsetLeft + body_main.offsetWidth - that.ele.offsetWidth){
+						left = body_main.offsetLeft + body_main.offsetWidth - that.ele.offsetWidth;
+					}
+					that.ele.style.left = left + 'px';
+					that.ele.style.top = top + 'px';
+				}
+			},
+			//开火
+			fire : function(frequency){ //0 1 2 3,
+				//记录this
+				var that = this;
+				var myFrequency = 200;
+				switch(frequency){
+					case 0 : myFrequency = 500;break;
+					case 1 : myFrequency = 400;break;
+					case 2 : myFrequency = 200;break;
+					case 3 : myFrequency = 50;break;
+				}
+				
+				//设置子弹编号
+				var bulletId = 0;
+				//买子弹
+				setInterval(function(){
+					//创建子弹,给子弹编号,存入数组
+					that.bullet.push(new Bullet(bulletId ++));
+					console.log(that.bullet);
+				},myFrequency)
+			},
+			//数组
+			bullet : []
+		}
+		//子弹
+		function Bullet(id){
+			//记录id
+			this.id = id;
+			//创建子弹
+			this.ele = createEle('div','bullet');
+			//初始化子弹
+			this.init();
+		}
+		Bullet.prototype.init = function(){
+			//将编号刻在子弹上
+			this.ele.id = this.id;
+			//加到页面中
+			appendBody(this.ele);
+			//定位子弹
+			this.ele.style.left = Plane.ele.offsetLeft + Plane.ele.offsetWidth / 2 - this.ele.offsetWidth / 2 + 'px';
+			this.ele.style.top = Plane.ele.offsetTop - this.ele.offsetHeight + 'px';
+			//让子弹飞一会儿
+			this.fly();
+		}
+		Bullet.prototype.fly = function(){
+			//记录this
+			var that = this;
+			this.timer = setInterval(function(){
+				that.ele.style.top = that.ele.offsetTop - 15 + 'px';
+				if(that.ele.offsetTop <= 10){
+					that.boom();
+				}
+			},30)
+		}
+		Bullet.prototype.boom = function(){
+			//记录this
+			var that = this;
+			this.ele.className = 'bullet_die';
+			clearInterval(this.timer);
+			//延时消失
+			setTimeout(function(){
+				that.ele.remove();
+				for(var i = 0,len = Plane.bullet.length;i < len;i ++){
+					if(that.ele.id == Plane.bullet[i].id){
+						Plane.bullet.splice(i,1);
+					}
+				}
+			},100)
+			
+		}
+		//敌机
+		function Enemy(type){
+			this.type = type;
+			this.init();
+		}
+		Enemy.prototype.init = function(){
+			switch(this.type){
+				case 0 : this.ele = createEle('div','enemy-small');this.hp = 1;this.speed = 10;break;
+				case 1 : this.ele = createEle('div','enemy-middle');this.hp = 5;this.speed = 8;break;
+				case 2 : this.ele = createEle('div','enemy-large');this.hp = 50;this.speed = 2;break;
+			}
+			appendBody(this.ele);
+			//定位敌机
+			this.position();
+		}
+		Enemy.prototype.position = function(){
+			//获取引擎
+			var body_main = document.getElementById("body_main");
+			this.ele.style.left = randomInt(body_main.offsetLeft,body_main.offsetLeft + body_main.offsetWidth - this.ele.offsetWidth) + 'px';
+			this.ele.style.top = - this.ele.offsetHeight + 'px';
+			//敌机起飞
+			this.fly();
+		}
+		Enemy.prototype.fly = function(){
+			var that = this;
+			this.timer = setInterval(function(){
+				that.ele.style.top = that.ele.offsetTop + that.speed + 'px';
+				that.collision(); //碰撞检测
+				//坠地
+				if(that.ele.offsetTop >= document.documentElement.clientHeight){
+					that.ele.remove();
+					clearInterval(that.timer);
+					
+				}
+			},30)
+		}
+		Enemy.prototype.collision = function(){
+			//遍历子弹
+			for(var i = 0;i < Plane.bullet.length;i ++){
+				if(!(Plane.bullet[i].ele.offsetLeft + Plane.bullet[i].ele.offsetWidth < this.ele.offsetLeft || this.ele.offsetLeft + this.ele.offsetWidth < Plane.bullet[i].ele.offsetLeft)){
+					if(!(Plane.bullet[i].ele.offsetTop + Plane.bullet[i].ele.offsetHeight < this.ele.offsetTop || this.ele.offsetTop + this.ele.offsetHeight < Plane.bullet[i].ele.offsetTop)){
+						//子弹消失
+						Plane.bullet[i].boom();
+						//敌机血量减少
+						this.hp --;
+						if(this.hp == 0){
+							this.ele.remove();
+							clearInterval(this.timer);
+						}
+					}
+				}
+			}
+		}
+		//工具箱
+		//创建元素
+		function createEle(tagName,className){
+			var ele = document.createElement(tagName);
+			ele.className = className;
+			return ele;
+		}
+		//添加到body
+		function appendBody(ele){
+			document.body.appendChild(ele);
+		}
+		//随机整数
+		function randomInt(min,max){
+			return Math.floor(Math.random() * (max - min + 1) + min);
+		}
+	</script>
+</head>
+<body>
+	<div id="body_main" class="main">
+			<ul id="options" class="options">
+				<li value="1">超级困难</li>
+				<li value="2">非常困难</li>
+				<li value="3">比较困难</li>
+				<li value="4">就选我吧</li>
+			</ul>
+	</div>
+</body>
+</html>
