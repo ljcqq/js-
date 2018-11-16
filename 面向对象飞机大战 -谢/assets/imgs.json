@@ -1,0 +1,327 @@
+{"frames": [
+
+{
+	"filename": "bomb",
+	"frame": {"x":241,"y":405,"w":42,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":42,"h":36},
+	"sourceSize": {"w":42,"h":36},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "bullet1",
+	"frame": {"x":496,"y":1,"w":6,"h":14},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":6,"h":14},
+	"sourceSize": {"w":6,"h":14},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "bullet2",
+	"frame": {"x":241,"y":443,"w":48,"h":14},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":14},
+	"sourceSize": {"w":48,"h":14},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "enemy1_blowup_1",
+	"frame": {"x":153,"y":486,"w":34,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":34,"h":24},
+	"sourceSize": {"w":34,"h":24},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "enemy1_blowup_2",
+	"frame": {"x":285,"y":405,"w":34,"h":32},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":34,"h":32},
+	"sourceSize": {"w":34,"h":32},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "enemy1_blowup_3",
+	"frame": {"x":448,"y":131,"w":38,"h":34},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":34},
+	"sourceSize": {"w":38,"h":34},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "enemy1_blowup_4",
+	"frame": {"x":238,"y":459,"w":31,"h":32},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":31,"h":32},
+	"sourceSize": {"w":32,"h":32},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "enemy1_fly_1",
+	"frame": {"x":331,"y":437,"w":34,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":34,"h":24},
+	"sourceSize": {"w":34,"h":24},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "enemy2_blowup_1",
+	"frame": {"x":1,"y":173,"w":110,"h":169},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":110,"h":169},
+	"sourceSize": {"w":110,"h":169},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "enemy2_blowup_2",
+	"frame": {"x":113,"y":1,"w":110,"h":169},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":110,"h":169},
+	"sourceSize": {"w":110,"h":169},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "enemy2_blowup_3",
+	"frame": {"x":113,"y":172,"w":110,"h":169},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":110,"h":169},
+	"sourceSize": {"w":110,"h":169},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "enemy2_blowup_4",
+	"frame": {"x":225,"y":1,"w":110,"h":169},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":110,"h":169},
+	"sourceSize": {"w":110,"h":169},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "enemy2_blowup_5",
+	"frame": {"x":225,"y":172,"w":110,"h":169},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":110,"h":169},
+	"sourceSize": {"w":110,"h":169},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "enemy2_blowup_6",
+	"frame": {"x":337,"y":167,"w":94,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":94,"h":133},
+	"sourceSize": {"w":94,"h":133},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "enemy2_blowup_7",
+	"frame": {"x":337,"y":302,"w":94,"h":133},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":94,"h":133},
+	"sourceSize": {"w":94,"h":133},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "enemy2_fly_1",
+	"frame": {"x":337,"y":1,"w":109,"h":164},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":164},
+	"sourceSize": {"w":110,"h":164},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "enemy2_fly_2",
+	"frame": {"x":1,"y":344,"w":109,"h":166},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":109,"h":166},
+	"sourceSize": {"w":110,"h":166},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "enemy2_hit_1",
+	"frame": {"x":1,"y":1,"w":110,"h":170},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":110,"h":170},
+	"sourceSize": {"w":110,"h":170},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "enemy3_blowup_1",
+	"frame": {"x":180,"y":343,"w":46,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":60},
+	"sourceSize": {"w":46,"h":60},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "enemy3_blowup_2",
+	"frame": {"x":228,"y":343,"w":46,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":60},
+	"sourceSize": {"w":46,"h":60},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "enemy3_blowup_3",
+	"frame": {"x":448,"y":67,"w":46,"h":62},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":62},
+	"sourceSize": {"w":46,"h":62},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "enemy3_blowup_4",
+	"frame": {"x":193,"y":405,"w":46,"h":52},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":52},
+	"sourceSize": {"w":46,"h":52},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "enemy3_fly_1",
+	"frame": {"x":276,"y":343,"w":46,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":60},
+	"sourceSize": {"w":46,"h":60},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "enemy3_hit_1",
+	"frame": {"x":448,"y":1,"w":46,"h":64},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":64},
+	"sourceSize": {"w":46,"h":64},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "enemy3_hit_2",
+	"frame": {"x":276,"y":343,"w":46,"h":60},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":46,"h":60},
+	"sourceSize": {"w":46,"h":60},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "enemy4_fly_1",
+	"frame": {"x":112,"y":426,"w":39,"h":68},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":39,"h":68},
+	"sourceSize": {"w":39,"h":68},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "enemy5_fly_1",
+	"frame": {"x":153,"y":426,"w":38,"h":58},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":58},
+	"sourceSize": {"w":38,"h":58},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "game_pause",
+	"frame": {"x":271,"y":459,"w":28,"h":30},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":30},
+	"sourceSize": {"w":28,"h":30},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "game_pause_hl",
+	"frame": {"x":301,"y":439,"w":28,"h":30},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":30},
+	"sourceSize": {"w":28,"h":30},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "hero_blowup_1",
+	"frame": {"x":433,"y":167,"w":66,"h":82},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":82},
+	"sourceSize": {"w":66,"h":82},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "hero_blowup_2",
+	"frame": {"x":433,"y":251,"w":66,"h":82},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":82},
+	"sourceSize": {"w":66,"h":82},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "hero_blowup_3",
+	"frame": {"x":433,"y":335,"w":66,"h":82},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":82},
+	"sourceSize": {"w":66,"h":82},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "hero_blowup_4",
+	"frame": {"x":193,"y":459,"w":43,"h":52},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":43,"h":52},
+	"sourceSize": {"w":44,"h":52},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "hero_fly_1",
+	"frame": {"x":433,"y":419,"w":66,"h":82},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":82},
+	"sourceSize": {"w":66,"h":82},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "hero_fly_2",
+	"frame": {"x":112,"y":344,"w":66,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":80},
+	"sourceSize": {"w":66,"h":80},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "imgs.png",
+	"format": "RGBA8888",
+	"size": {"w":512,"h":512},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:d3663012c81a954b3141037edaf13ae7:b4a715cb2b2945dafcfe2de4dc605b11:b2a319a0fd4740ebbfe4a4452a196eb5$"
+}
+}

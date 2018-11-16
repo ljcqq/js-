@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/RES.js" type="text/javascript"></script>
+    <script src="js/game.js" type="text/javascript"></script>
+</head>
+<body>
+    <script>
+
+        /*
+        *
+        *   1、游戏场景构建(初构建)
+        *     1)、背景构建（背景图轮播）
+        *     2)、开始按钮
+        *     3)、场景状态（开始状态，游戏状态，结束状态）
+        *   2、hero战机
+        *      1）、战机状态
+        *      2)、战机随鼠标移动
+        *      3）、战机血槽
+        *   3、子弹、炸弹
+        *       1）、状态
+        *       2）、让子弹飞起来
+        *       3）、子弹消失
+        *       4）、等级影响威力
+        *       5)、子弹降级时间
+        *    4、敌机
+        *       1)、敌机状态
+        *       2）、死亡状态
+        *       3）、敌机飞
+        *       4）、敌机血量
+        *    5、礼物
+        *       1)、礼物状态
+        *       2）、礼物飞
+        *     6、将所有内容整合在场景中
+        *     7、游戏暂停
+        *     8、计分
+        *     9、gameover
+        *
+        *
+        *
+        * */
+
+        var game=new Game(document.body,["config","imgs"]);
+
+        animation();
+        function animation() {
+            requestAnimationFrame(animation);
+            game.update();
+        }
+    </script>
+</body>
+</html>

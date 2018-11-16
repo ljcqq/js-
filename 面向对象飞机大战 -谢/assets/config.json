@@ -1,0 +1,20 @@
+{
+  "bg":{"bgImg":"assets/background_2.png","width":320,"height":568},
+  "hero":{"live":["hero_fly_1","hero_fly_2"],"die":["hero_blowup_1","hero_blowup_2","hero_blowup_3","hero_blowup_4"]},
+  "bullet":["bullet1","bullet2","bomb"],
+  "enemy":{
+    "enemy1":{"live":["enemy1_fly_1"],"hit":["enemy1_fly_1"],"die":["enemy1_blowup_1","enemy1_blowup_2","enemy1_blowup_3","enemy1_blowup_4"]},
+    "enemy2":{"live":["enemy2_fly_1","enemy2_fly_2"],"hit":["enemy2_hit_1"],"die":["enemy2_blowup_1","enemy2_blowup_2","enemy2_blowup_3","enemy2_blowup_4","enemy2_blowup_5"]},
+    "enemy3":{"live":["enemy3_fly_1"],"hit":["enemy3_hit_1","enemy3_hit_2"],"die":["enemy3_blowup_1","enemy3_blowup_2","enemy3_blowup_3","enemy3_blowup_4"]}
+  },
+  "enemyList":[
+    {"enemy_1":[50,150]},
+    null,
+    null,
+    {"enemy_2":[80]},
+    null,
+    {"enemy_3":[50,120]},
+    null,
+    {"enemy_1":[20,100,180]}
+  ]
+}
